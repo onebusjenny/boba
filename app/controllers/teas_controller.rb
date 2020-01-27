@@ -27,6 +27,12 @@ class TeasController < ApplicationController
         end
     end
 
+    def show
+        @tea = Tea.find(params[:id])
+
+    end
+
+
     def edit
         @tea = Tea.find(params[:id])
     end

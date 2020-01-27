@@ -1,4 +1,16 @@
 <h1>all the bobas are here</h1>
 
 
+  
+  <h3>Boba Name:</h3>
+  <%= @tea.name%>
+  <h3>Boba Flavor:</h3>
+  <%= @tea.flavor%>
+  <h3>Boba Ingredients:</h3>
+  <% @tea.ingredients.each do |ingredient| %>
+  <%= ingredient.name%>
+    <%end%>
+<h3>Created by: <%= @tea.user.name%>
+<button><%= link_to "create", teas_path, method: :get%></button>
+
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>
