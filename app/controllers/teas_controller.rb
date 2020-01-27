@@ -6,25 +6,35 @@ class TeasController < ApplicationController
 
     def new
         @tea = Tea.new
-        @tea.tea_ingredients.build
-        @tea.tea_ingredients.build
-        @tea.tea_ingredients.build
-       
+        
+        # @tea_ingredients = TeaIngredient.new 
+        # @tea.tea_ingredients.build
+        # @tea.tea_ingredients.build
         @ingredients = Ingredient.all
     end
 
     def create
-        @tea = Tea.new(
+        @tea = Tea.create(
             :name => params[:tea][:name],
             :flavor => params[:tea][:flavor]
         )    
-        redierect_to tea_path(@tea)     
+        @tea.ingredients_ids = params[:tea][:ingredient_ids]
+        @tea.user = current_user
+        if @tea.has_ingredients?&& @tea.save
+            redirect_to teas_path(@tea)
+        else
+            render :new
+        end
     end
 
     def edit
+        @tea = Tea.find(params[:id])
     end
 
     def update
+        @tea = Tea.find(params[:id])
+        @ingredients = Ingredient.all
+        redirect_to teas_path(@tea)
     end
 
 

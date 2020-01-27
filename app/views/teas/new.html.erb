@@ -2,25 +2,18 @@
     
 <%=form_for @tea, url: teas_path, method: :post do |f|%> 
 <%=f.label(:name)%>
-<%=f.text_field (:name)%><br>
+<%=f.text_field(:name)%><br>
 
 <%=f.label(:flavor)%>
-  <%=f.text_field (:flavor)%><br>
+  <%=f.text_field(:flavor)%><br>
 
-<%=f.fields_for :tea_ingredients do |tea_ingredient_fields|%>
-<%# <%binding.pry%> %>
-  <%=tea_ingredient_fields.label :ingredient %>
-  <%=tea_ingredient_fields.collection_select :ingredient_id, Ingredient.all. :name, :id %>
-  <%# :ingredient_id, @ingredients, :id, :name, include_blank: true %>
-  <%# #collecton_select or #select %> %>
 
-  <%=tea_ingredient_fields.label :amount %>
-  <%=tea_ingredient_fields.text_field :amount %><br>
-  
-<%= %>
+
+
+
+  <%=f.submit "Create"%>
 <%end%>
-<%=f.submit "Create"%>
-<%end%>
+
 
 
 

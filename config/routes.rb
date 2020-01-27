@@ -1,37 +1,38 @@
 Rails.application.routes.draw do
     
 
-  resource :users, only: [:index,:show] do
-    resource :teas, only: [:show, :index]
+  resources :users, only: [:index,:show] do
+    resources :teas, only: [:show, :index]
   end
 
-  resource :teas, only: [:index,:new, :create, :show, :edit, :update, :delete]
+  resources :teas
   
-get '/' => 'sessions#home' 
+  root 'sessions#home'
+  get '/' => 'sessions#home' 
 
-get '/signup', to: 'users#signup'
-post '/signup', to: 'users#create'
+  get '/signup', to: 'users#signup'
+  post '/signup', to: 'users#create'
 
-get '/login', to: 'sessions#login'
-post '/login', to: 'sessions#create'
-delete '/logout', to: 'sessions#destroy' 
+  get '/login', to: 'sessions#login'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy' 
 
 # get '/auth/facebook/callback' => 'sessions#create'
 # get '/auth/failure' => '/'
+  post '/' => 'users#create'
 
-root 'sessions#home'
+  get '/' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  post '/logout' => 'sessions#destroy'
+
+  post '/users' => 'users#create'
+  get '/bobas' => 'bobas#index'
 
 
 
 
-post '/' => 'users#create'
 
-get '/' => 'sessions#new'
-post '/login' => 'sessions#create'
-post '/logout' => 'sessions#destroy'
 
-post '/users' => 'users#create'
-get '/bobas' => 'bobas#index'
 
 end
 
