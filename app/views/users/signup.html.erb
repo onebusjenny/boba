@@ -1,0 +1,17 @@
+<h1>Sign Up here</h1>
+
+<%=form_for @user, url: signup_path, method: :post do |f|%> 
+<%=f.label(:email)%>
+<%=f.text_field (:email)%><br>
+
+<%=f.label(:name)%>
+<%=f.text_field (:name)%><br>
+
+<%=f.label(:password)%>
+<%=f.password_field (:password)%><br>
+
+<%=f.submit "Sign Up"%>
+<%end%>
+
+<p>Already have an account? <%= link_to "Log In", login_path%></p>
+
