@@ -1,16 +1,30 @@
 <h1>My Boba</h1>
 
-<h3>Boba Name:</h3>
-<h4><%=@users.tea.each do |b|%>
-    Name:<%=tea.name%>
-    Ingredients:<%=tea.ingredients%>
-    Amount:<%=tea.ingredients.amount%>
+
+<% @user.teas.each do |t|%>
+<p>Boba Name:
+<%= t.name%> </p>
+  <p>Boba Flavor:
+  <%= t.flavor%>
+  </p>
+  
+
+  <p>Boba Ingredients:
+  <% t.tea_ingredients.each do |teaingredient| %>
+  <%= teaingredient.ingredient.name%>
+  Amount:
+  <%=teaingredient.amount%></p>
+ 
     <%end%>
+<%end%>
 
+  
+   
+   <% if @user == current_user%>
+    <%=link_to "Edit boba", edit_teas_path(@tea)%>
+    <%=link_to "Delete boba", tea, method: :delete%>
+    <%end%>
+  </div>
 
-
-
-
-
-<button><%= link_to "Log In", login_path, method: :delete%></button>
+<p>Total Posts: <%= @user.teas.count %></p>
 

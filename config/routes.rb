@@ -2,7 +2,7 @@ Rails.application.routes.draw do
     
 
   resources :users, only: [:index,:show] do
-    resources :teas, only: [:show, :index]
+    resources :teas, only: [:new, :show]
   end
 
   resources :teas

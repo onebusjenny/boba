@@ -1,0 +1,11 @@
+<h1>Edit this bubble tea</h1>
+
+<%=form_for @tea do |t|%>
+<%=t.label(:name)%>
+<%=t.text_field(:name)%><br>
+
+<%=t.label(:flavor)%>
+<%=t.text_field(:flavor)%><br>
+
+<%=t.label(:ingredient)%>
+<%=t.select :ingredient, ['Tapioca', 'Coconut Jelly']%>
