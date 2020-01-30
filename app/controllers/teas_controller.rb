@@ -8,6 +8,9 @@ class TeasController < ApplicationController
         @tea = Tea.new
         @tea.tea_ingredients.build
         @tea.tea_ingredients.build
+        @tea.tea_ingredients.build
+        @tea.tea_ingredients.build
+        @tea.tea_ingredients.build
         @ingredients = Ingredient.all
     end
 
@@ -16,7 +19,7 @@ class TeasController < ApplicationController
             :name => params[:tea][:name],
             :flavor => params[:tea][:flavor]
         )    
-        @tea.ingredients_ids = params[:tea][:ingredient_ids]
+        @tea.ingredient_ids = params[:tea][:ingredient_ids]
         @tea.user = current_user
         if @tea.has_ingredients?&& @tea.save
             redirect_to teas_path(@tea)

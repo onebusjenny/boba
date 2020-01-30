@@ -9,13 +9,9 @@
 
 <%=f.fields_for(:tea_ingredients) do |ff|%>
 <%=ff.label(:ingredient) %>
-<%=ff.select(:ingredient_id ,options_for_select(@ingredients, selected: @ingredients.name ) )%>
+<%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }) )%>
 <%=ff.label(:amount)%>
 <%=ff.text_field(:amount)%><br>
-<%end%>
-<% @tea.ingredients.each do |ingredient| %>
-  <%= ingredient.name%>
-
 <%end%>
 
 <br>
