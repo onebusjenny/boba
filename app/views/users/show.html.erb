@@ -21,6 +21,7 @@
   
    
    <% if @user == current_user%>
+   <%=link_to "Create new boba", new_user_tea_path(@tea)%>
     <%=link_to "Edit boba", edit_teas_path(@tea)%>
     <%=link_to "Delete boba", tea, method: :delete%>
     <%end%>

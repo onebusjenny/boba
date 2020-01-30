@@ -2,10 +2,10 @@ Rails.application.routes.draw do
     
 
   resources :users, only: [:index,:show] do
-    resources :teas, only: [:new, :show]
+    resources :teas, only: [:new, :create, :show]
   end
 
-  resources :teas
+  resources :teas, exclude: [:create, :new]
   
   root 'sessions#home'
   get '/' => 'sessions#home' 

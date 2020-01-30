@@ -7,10 +7,18 @@
 <%=f.label(:flavor)%>
 <%=f.text_field(:flavor)%><br>
 
-<%# <%=f. %> %>
+<%=f.fields_for(:tea_ingredients) do |ff|%>
+<%=ff.label(:ingredient) %>
+<%=ff.select(:ingredient_id ,options_for_select(@ingredients, selected: @ingredients.name ) )%>
+<%=ff.label(:amount)%>
+<%=ff.text_field(:amount)%><br>
+<%end%>
+<% @tea.ingredients.each do |ingredient| %>
+  <%= ingredient.name%>
 
+<%end%>
 
-
+<br>
 
 
   <%=f.submit "Create"%>

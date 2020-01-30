@@ -1,4 +1,6 @@
 <h1>all the bobas are here</h1>
+
+
 <%@teas.each do |tea| %>
   <div class="tea">
   <%=link_to tea.name, tea_path(tea) %>
@@ -8,4 +10,7 @@
 
 <%end%>
 <br>
+<button><%= link_to "Create new boba", new_tea_path(@teas) %></button>
+<button><%= link_to "My boba", user_teas_path(@teas) %></button>
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>
+

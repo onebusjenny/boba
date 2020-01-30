@@ -6,10 +6,8 @@ class TeasController < ApplicationController
 
     def new
         @tea = Tea.new
-        
-        # @tea_ingredients = TeaIngredient.new 
-        # @tea.tea_ingredients.build
-        # @tea.tea_ingredients.build
+        @tea.tea_ingredients.build
+        @tea.tea_ingredients.build
         @ingredients = Ingredient.all
     end
 

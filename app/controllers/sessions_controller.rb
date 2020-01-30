@@ -1,12 +1,13 @@
 class SessionsController < ApplicationController
 
-
     def login
+
+
         if logged_in?
             redirect_to teas_path(current_user)
         else
             @user = User.new
-            # redirect_to login_path
+            render :login 
         end
     end
 
@@ -14,13 +15,14 @@ class SessionsController < ApplicationController
     
 
     def create
+        
         user = User.find_by(email:params[:email])
         if user && user.authenticate(password:params[:password])
             session[:user_id] = user.user_id
             redirect_to teas_path(current_user)
         else
-            flash[:errors] = ['invalid credentials']
-            redirect_to '/teas'
+            @error = 'invalid credentials'
+            render :login
         end
     end
 
