@@ -1,6 +1,6 @@
 <h1>Customize your bubble tea</h1>
     
-<%=form_for @tea, url: teas_path, method: :post do |f|%> 
+<%=form_for @tea, url: user_teas_path(current_user), method: :post do |f|%> 
 <%=f.label(:name)%>
 <%=f.text_field(:name)%><br>
 
@@ -9,7 +9,7 @@
 
 <%=f.fields_for(:tea_ingredients) do |ff|%>
 <%=ff.label(:ingredient) %>
-<%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }) )%>
+<%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }), {:include_blank => 'select ingredient here'} )%>
 <%=ff.label(:amount)%>
 <%=ff.text_field(:amount)%><br>
 <%end%>

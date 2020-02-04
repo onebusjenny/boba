@@ -1,12 +1,10 @@
-<h1>My bobas</h1>
-
+<h1>All bobas here</h1>
 
 <%@teas.each do |tea| %>
   <div class="tea">
   <%=link_to tea.name, user_tea_path(tea.user_id, tea) %>
  
   </div>
- 
 
 <%end%>
 <br>

@@ -1,7 +1,11 @@
 class TeasController < ApplicationController
 
-    def index
+    def all_bobas
         @teas = Tea.all
+    end
+
+    def index
+        @teas = current_user.teas
     end
 
     def new
@@ -9,21 +13,22 @@ class TeasController < ApplicationController
         @tea.tea_ingredients.build
         @tea.tea_ingredients.build
         @tea.tea_ingredients.build
-        @tea.tea_ingredients.build
-        @tea.tea_ingredients.build
         @ingredients = Ingredient.all
     end
 
     def create
-        @tea = Tea.create(
-            :name => params[:tea][:name],
-            :flavor => params[:tea][:flavor]
-        )    
-        @tea.ingredient_ids = params[:tea][:ingredient_ids]
+       
+        @tea = Tea.new(tea_params)    
         @tea.user = current_user
-        if @tea.has_ingredients?&& @tea.save
-            redirect_to teas_path(@tea)
+        
+        if  @tea.save
+            redirect_to teas_path
         else
+            @tea = Tea.new
+            @tea.tea_ingredients.build
+            @tea.tea_ingredients.build
+            @tea.tea_ingredients.build
+            @ingredients = Ingredient.all
             render :new
         end
     end
@@ -42,6 +47,12 @@ class TeasController < ApplicationController
         @tea = Tea.find(params[:id])
         @ingredients = Ingredient.all
         redirect_to teas_path(@tea)
+    end
+
+
+    private
+    def tea_params
+      params.require(:tea).permit(:name, :flavor, tea_ingredients_attributes: [:ingredient_id, :amount])
     end
 
 

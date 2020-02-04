@@ -1,0 +1,16 @@
+<h1>Select your ingredients here</h1>
+
+  <h3>Boba Name:</h3>
+  <%= @tea.name%>
+  <h3>Boba Flavor:</h3>
+  <%= @tea.flavor%>
+
+
+
+<%=form_for(@tea_ingredients) do |ff|%>
+<%=ff.label(:ingredient) %>
+<%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }), {:include_blank => 'select ingredient here'} )%>
+<%=ff.label(:amount)%>
+<%=ff.text_field(:amount)%><br>
+
+<%end%>

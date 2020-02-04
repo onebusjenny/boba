@@ -2,10 +2,10 @@ Rails.application.routes.draw do
     
 
   resources :users, only: [:index,:show] do
-    resources :teas, only: [:new, :create, :show]
+    resources :teas, only: [:new, :create, :show, :index]
   end
 
-  resources :teas, exclude: [:create, :new]
+  # resources :teas, only: [:index, :show]
   
   root 'sessions#home'
   get '/' => 'sessions#home' 
@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy' 
 
+  get '/teas', to: 'teas#all_bobas'
 # get '/auth/facebook/callback' => 'sessions#create'
 # get '/auth/failure' => '/'
   post '/' => 'users#create'
