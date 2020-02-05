@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-
+  before_action :require_login
+  skip_before_action :require_login, only: [:create, :new]
 
     def index
        
@@ -23,11 +24,17 @@ class UsersController < ApplicationController
     def show
       @user = User.find(params[:id])
     end
-      private
-      def user_params
-        params.require(:user).permit(:name, :email, :password)
-      end
+
+    def most_teas
+      @user = User.most_teas
+      render 'show' 
+    end 
     
-      
+      private
+    def user_params
+        params.require(:user).permit(:name, :email, :password)
+    end
+    
+    
 
 end

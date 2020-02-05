@@ -17,9 +17,11 @@ class SessionsController < ApplicationController
     def create
         
         user = User.find_by(email:params[:email])
-        if user && user.authenticate(password:params[:password])
-            session[:user_id] = user.user_id
+        # binding.pry
+        if user && user.authenticate(params[:password])
+            session[:user_id] = user.id
             redirect_to teas_path(current_user)
+            # not logging in my user_id for some reason
         else
             @error = 'invalid credentials'
             render :login
@@ -40,3 +42,6 @@ class SessionsController < ApplicationController
 end
     
 
+#install the gem
+#copy the key from fb dev
+#write method in controller, model

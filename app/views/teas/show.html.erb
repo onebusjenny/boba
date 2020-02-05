@@ -1,4 +1,6 @@
-<h1>All the bobas are here</h1>
+<h1>Bobas Playground</h1>
+<p>Here are all the bobas other users created</p> 
+<p>Once you created a boba, it will be shared here</p>
 
 
   <h3>Boba Name:</h3>
@@ -11,5 +13,6 @@
     <%end%>
 <h3>Created by: <%= @tea.user.name%>
 
+<button><%= link_to "edit boba", edit_user_tea_path(@tea)%></button>
 <button><%= link_to "back", teas_path, method: :get%></button>
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>

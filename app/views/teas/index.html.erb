@@ -7,10 +7,10 @@
  
   </div>
  
-
 <%end%>
 <br>
+
 <button><%= link_to "Create new boba", new_user_tea_path(current_user) %></button>
-<button><%= link_to "My boba", user_teas_path(current_user) %></button>
+<button><%= link_to "Boba playground", teas_path(current_user) %></button>
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>
 

@@ -1,4 +1,6 @@
-<h1>All bobas here</h1>
+<h1>BOBAS PLAYGROUND</h1>
+
+<h3>Bobas by other users</h3>
 
 <%@teas.each do |tea| %>
   <div class="tea">
@@ -8,6 +10,7 @@
 
 <%end%>
 <br>
+<p>Create yours and share your boba creation here with other people!</p>
 <button><%= link_to "Create new boba", new_user_tea_path(current_user) %></button>
 <button><%= link_to "My boba", user_teas_path(current_user) %></button>
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>

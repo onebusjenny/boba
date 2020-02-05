@@ -7,6 +7,8 @@ class Tea < ApplicationRecord
     
     validates :name, presence: true
 
+    scope :ordered, -> { order(name: "desc") }
+
     def has_ingredients?
         self.ingredients.any?
     end

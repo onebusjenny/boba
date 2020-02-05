@@ -1,0 +1,28 @@
+<div>
+  <% if @errors%>
+    Please review the errors: 
+    <% @errors.full_messages.each do |message| %>
+      <%= message %>
+    <% end %>
+  <% end %>
+</div>
+<br>
+<%=form_for @tea, url: url, method: method do |f|%> 
+  <%=f.label(:name)%>
+  <%=f.text_field(:name) %><br>
+
+  <%=f.label(:flavor)%>
+  <%=f.text_field(:flavor)%><br>
+
+  <%=f.fields_for :tea_ingredients, @tea.tea_ingredients do |ff|%>
+    <%=ff.label(:ingredient) %>
+    <%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }), {:include_blank => 'select ingredient here'} )%>
+    <%=ff.label(:amount)%>
+    <%=ff.text_field(:amount)%><br>
+  <%end%>
+
+<br>
+
+
+  <%=f.submit button%>
+<%end%>

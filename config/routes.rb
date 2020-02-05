@@ -2,10 +2,8 @@ Rails.application.routes.draw do
     
 
   resources :users, only: [:index,:show] do
-    resources :teas, only: [:new, :create, :show, :index]
+    resources :teas, only: [:new, :create, :show, :index, :edit, :update]
   end
-
-  # resources :teas, only: [:index, :show]
   
   root 'sessions#home'
   get '/' => 'sessions#home' 
@@ -18,8 +16,13 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy' 
 
   get '/teas', to: 'teas#all_bobas'
+
+  get '/most_teas' => 'users#most_teas'
+  #controller/model/view(show)
+
 # get '/auth/facebook/callback' => 'sessions#create'
 # get '/auth/failure' => '/'
+
   post '/' => 'users#create'
 
   get '/' => 'sessions#new'
