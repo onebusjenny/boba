@@ -2,9 +2,11 @@ Rails.application.routes.draw do
     
 
   resources :users, only: [:index,:show] do
-    resources :teas, only: [:new, :create, :show, :index, :edit, :update]
+    resources :teas, except: :delete
   end
   
+# resources :teas, only: [:index, :show]
+
   root 'sessions#home'
   get '/' => 'sessions#home' 
 
