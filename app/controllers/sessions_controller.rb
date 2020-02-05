@@ -11,33 +11,32 @@ class SessionsController < ApplicationController
         end
     end
 
-
-    
-
-    def create
-        
-        user = User.find_by(email:params[:email])
-        # binding.pry
-        if user && user.authenticate(params[:password])
-            session[:user_id] = user.id
-            redirect_to teas_path(current_user)
-            # not logging in my user_id for some reason
+    def create 
+        if auth_hash = request.env["omiauth.auth"]
+            user = User.find_or_create_by_omniauth(auth_hash)
+            # raise auth_hash.inspect
         else
-            @error = 'invalid credentials'
-            render :login
+                user = User.find_by(email:params[:email])
+            if  user && user.authenticate(params[:password])
+                session[:user_id] = user.id
+                redirect_to teas_path(current_user)
+            else
+                @error = 'invalid credentials'
+                render :login
+            end
         end
     end
 
-    # def create
-    #     @user = User.find_by(username: params[:username])
-    #     return head(:forbidden) unless @user.authenticate(params[:password])
-    #     session[:user_id] = @user.id
-    #   end
-    # end
 
     def destroy
         session.delete :user_id
         redirect_to '/'
+    end
+
+    private
+ 
+    def auth
+        request.env['omniauth.auth']
     end
 end
     

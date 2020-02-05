@@ -17,11 +17,9 @@ Rails.application.routes.draw do
 
   get '/teas', to: 'teas#all_bobas'
 
-  get '/most_teas' => 'users#most_teas'
-  #controller/model/view(show)
-
-# get '/auth/facebook/callback' => 'sessions#create'
-# get '/auth/failure' => '/'
+  get '/auth/facebook'
+  get '/auth/facebook/callback' => 'sessions#create'
+  get '/auth/failure' => '/'
 
   post '/' => 'users#create'
 
