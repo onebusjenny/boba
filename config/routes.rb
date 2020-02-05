@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
-    
-
-  resources :users, only: [:index,:show] do
+   resources :users, only: [:index,:show] do
     resources :teas, except: :delete
   end
   
@@ -33,26 +31,7 @@ Rails.application.routes.draw do
   get '/bobas' => 'bobas#index'
 
 
-
-
-
-
-
 end
-
-
-
-
-
-
-
-# get "bobas", to: "bobas#index"
-# get "bobas", to: "bobas#new"
-# post "bobas", to: "bobas#create"
-# get "bobas", to: "bobas#show"
-# get "bobas", to: "bobas#edit"
-# patch "bobas", to: "bobas#update"
-# delete "bobas", to: "bobas#destroy"
 
 
 

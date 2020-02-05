@@ -1,8 +1,6 @@
 class SessionsController < ApplicationController
 
     def login
-
-
         if logged_in?
             redirect_to teas_path(current_user)
         else
@@ -42,7 +40,3 @@ class SessionsController < ApplicationController
     end
 end
     
-
-#install the gem
-#copy the key from fb dev
-#write method in controller, model

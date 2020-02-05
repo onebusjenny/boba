@@ -5,8 +5,6 @@
   <h3>Boba Flavor:</h3>
   <%= @tea.flavor%>
 
-
-
 <%=form_for(@tea_ingredients) do |ff|%>
 <%=ff.label(:ingredient) %>
 <%=ff.select(:ingredient_id ,options_for_select(@ingredients.collect{ |i| [i.name, i.id] }), {:include_blank => 'select ingredient here'} )%>
