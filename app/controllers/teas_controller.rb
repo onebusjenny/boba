@@ -4,12 +4,7 @@ class TeasController < ApplicationController
     end
 
     def index
-        # if when i see teas for all the users
-        #     params
-        #     user_tea 
-        # end
         @teas = current_user.teas
-
     end
 
     def new
