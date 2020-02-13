@@ -9,6 +9,10 @@
   </div>
 
 <%end%>
+<%= form_tag(teas_path) do %>
+  Tea <%= text_field_tag :tea, params[:tea] %>
+  <%= submit_tag 'Search' %>
+<% end %>
 <br>
 <p>Create yours and share your boba creation here with other people!</p>
 <button><%= link_to "Create new boba", new_user_tea_path(current_user) %></button>

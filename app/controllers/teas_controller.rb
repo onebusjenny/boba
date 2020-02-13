@@ -1,10 +1,17 @@
 class TeasController < ApplicationController
     def all_bobas
         @teas = Tea.ordered
+        if params[:tea]
+            @teas = Tea.where('name LIKE?', "%#{params[:tea]}")
+        else
+            @teas = Tea.ordered
+        end
     end
+    
 
     def index
         @teas = current_user.teas
+       
     end
 
     def new
@@ -50,7 +57,6 @@ class TeasController < ApplicationController
     end
 
     private
-
     def tea_params
       params.require(:tea).permit(:name, :flavor, tea_ingredients_attributes: [:id, :ingredient_id, :amount])
     end

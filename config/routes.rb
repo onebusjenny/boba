@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     resources :teas, except: :delete
   end
   
-# resources :teas, only: [:index, :show]
+
 
   root 'sessions#home'
   get '/' => 'sessions#home' 
@@ -14,6 +14,8 @@ Rails.application.routes.draw do
   get '/login', to: 'sessions#login'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy' 
+
+  post '/teas', to: 'teas#all_bobas'
 
   get '/teas', to: 'teas#all_bobas'
 

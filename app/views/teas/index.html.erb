@@ -9,8 +9,17 @@
  
 <%end%>
 <br>
+<%= form_tag(teas_path) do %>
+  Tea <%= text_field_tag :tea, params[:tea] %>
+  <%= submit_tag 'Search' %>
+<% end %>
+
+
+
+
+
 
 <button><%= link_to "Create new boba", new_user_tea_path(current_user) %></button>
-<button><%= link_to "Boba playground", teas_path(current_user) %></button>
+<button><%= link_to "Boba playground", teas_path %></button>
 <button><%= link_to "Log Out", logout_path, method: :delete%></button>
 
